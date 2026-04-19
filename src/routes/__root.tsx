@@ -31,14 +31,18 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Yatendra Jha Resume" },
+      { name: "description", content: "A dynamic resume website with an admin portal for easy content management." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Yatendra Jha Resume" },
+      { property: "og:description", content: "A dynamic resume website with an admin portal for easy content management." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Yatendra Jha Resume" },
+      { name: "twitter:description", content: "A dynamic resume website with an admin portal for easy content management." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2de2835b-3e83-4656-84cb-e4fa051a584d/id-preview-5250da0c--11912ace-3923-4482-ae2b-e28c66edfdf1.lovable.app-1776589532608.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2de2835b-3e83-4656-84cb-e4fa051a584d/id-preview-5250da0c--11912ace-3923-4482-ae2b-e28c66edfdf1.lovable.app-1776589532608.png" },
     ],
     links: [
       {
