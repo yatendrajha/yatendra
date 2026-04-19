@@ -1,26 +1,46 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { AuroraBackground } from "@/components/site/AuroraBackground";
+import { Navbar } from "@/components/site/Navbar";
+import { Hero } from "@/components/site/Hero";
+import { Journey } from "@/components/site/Journey";
+import { Impact } from "@/components/site/Impact";
+import { Skills } from "@/components/site/Skills";
+import { Cases } from "@/components/site/Cases";
+import { Contact } from "@/components/site/Contact";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "Yatendra Jha — Product Leader | Fintech Platforms & Enterprise AI" },
+      {
+        name: "description",
+        content:
+          "14+ years building API-first, multi-tenant lending platforms. ₹40,000+ Cr disbursement across 30+ institutions. Mumbai, India.",
+      },
+      { property: "og:title", content: "Yatendra Jha — Product Leader" },
+      {
+        property: "og:description",
+        content:
+          "Co-lending, underwriting, and enterprise AI. A 14-year journey through fintech.",
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="dark relative min-h-screen bg-background text-foreground antialiased">
+      <AuroraBackground />
+      <Navbar />
+      <main>
+        <Hero />
+        <Journey />
+        <Impact />
+        <Skills />
+        <Cases />
+        <Contact />
+      </main>
     </div>
   );
-}
-
-function Index() {
-  return <PlaceholderIndex />;
 }
