@@ -1,60 +1,10 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-
-const milestones = [
-  {
-    year: "2011 – 2013",
-    title: "The Foundation",
-    org: "Lala Lajpat Rai College — BMS",
-    body: "Bachelor of Management Studies. Curiosity meets discipline.",
-    tag: "Beginnings",
-  },
-  {
-    year: "Early Career",
-    title: "Built for scale",
-    org: "NCR Corporation — IT Analyst",
-    body: "Supported large-scale payment & fintech systems. Learned the cost of every minute of downtime.",
-    tag: "Reliability",
-  },
-  {
-    year: "2016 – 2018",
-    title: "Product mind",
-    org: "L.N. Welingkar Institute — PGDM",
-    body: "Frameworks meet field reality. Began thinking in systems, funnels, and unit economics.",
-    tag: "Education",
-  },
-  {
-    year: "2018 – 2020",
-    title: "Digitizing the fleet",
-    org: "Western India Transport Finance — Sr. IT Manager",
-    body: "Owned digital transformation of commercial vehicle lending. Grew AUM ₹60 Cr → ₹120 Cr.",
-    tag: "Transformation",
-  },
-  {
-    year: "2020",
-    title: "Gold, but digital",
-    org: "Mangal Credit & Fincorp — AVP Technology",
-    body: "Replaced spreadsheet-driven gold-loan processes. 40% faster approvals, 30% fewer errors.",
-    tag: "Automation",
-  },
-  {
-    year: "2020 – 2024",
-    title: "Platform thinking",
-    org: "Dvara Solutions — Business Consultant (Product)",
-    body: "Partnered with 30+ Banks & NBFCs. ₹40,000+ Cr AUM managed, 1L+ end customers.",
-    tag: "Ecosystem",
-  },
-  {
-    year: "2024 – Now",
-    title: "Co-lending, reimagined",
-    org: "Avanse Financial Services — Chief Manager, Transformation",
-    body: "T+15 → T+1 payouts. +18–22% conversion. +40% lending capacity. API-first, multi-partner.",
-    tag: "Today",
-  },
-];
+import { useMilestones } from "@/hooks/use-content";
 
 export function Journey() {
   const ref = useRef<HTMLElement>(null);
+  const milestones = useMilestones();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const lineHeight = useTransform(scrollYProgress, [0.05, 0.95], ["0%", "100%"]);
 
