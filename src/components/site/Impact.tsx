@@ -1,16 +1,9 @@
 import { motion } from "framer-motion";
 import { SectionHeader } from "./Journey";
-
-const stats = [
-  { value: "₹40,000+ Cr", label: "AUM managed across 30+ institutions" },
-  { value: "1,00,000+", label: "End customers served" },
-  { value: "T+15 → T+1", label: "Payout TAT reduced" },
-  { value: "+40%", label: "Lending capacity unlocked" },
-  { value: "+18–22%", label: "Loan conversion uplift" },
-  { value: "+60%", label: "Operations efficiency" },
-];
+import { useStats } from "@/hooks/use-content";
 
 export function Impact() {
+  const stats = useStats();
   return (
     <section id="impact" className="relative py-32 px-4">
       <div className="max-w-6xl mx-auto">

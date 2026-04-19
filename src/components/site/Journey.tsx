@@ -77,7 +77,7 @@ function Milestone({
           {m.tag}
         </span>
         <h3 className="font-display text-2xl font-semibold text-foreground">{m.title}</h3>
-        <p className="text-sm text-muted-foreground mt-1">{m.org}</p>
+        <p className="text-sm text-muted-foreground mt-1">{m.organization}</p>
         <p className="text-sm text-foreground/80 mt-4 leading-relaxed">{m.body}</p>
       </motion.div>
     </motion.li>
