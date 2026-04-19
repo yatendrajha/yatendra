@@ -22,7 +22,7 @@ export function Cases() {
               <div
                 className={`absolute -top-20 -right-20 h-48 w-48 rounded-full bg-gradient-to-br ${c.accent} opacity-20 blur-3xl group-hover:opacity-40 transition-opacity duration-700`}
               />
-              <p className="font-mono text-[10px] uppercase tracking-widest text-primary">{c.sub}</p>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-primary">{c.subtitle}</p>
               <h3 className="mt-2 font-display text-xl font-semibold text-foreground leading-snug">
                 {c.title}
               </h3>

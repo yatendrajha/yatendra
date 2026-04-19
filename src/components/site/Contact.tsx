@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { SectionHeader } from "./Journey";
+import { useContactLinks, useProfile } from "@/hooks/use-content";
 
 export function Contact() {
+  const links = useContactLinks();
+  const profile = useProfile();
+
   return (
     <section id="contact" className="relative py-32 px-4">
       <div className="max-w-4xl mx-auto text-center">
@@ -24,13 +28,9 @@ export function Contact() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="mt-12 grid sm:grid-cols-3 gap-4"
         >
-          <ContactCard label="Email" value="hi@yatendrajha.in" href="mailto:hi@yatendrajha.in" />
-          <ContactCard label="Phone" value="+91 99679 58271" href="tel:+919967958271" />
-          <ContactCard
-            label="LinkedIn"
-            value="/in/yatendra1990"
-            href="https://linkedin.com/in/yatendra1990"
-          />
+          {links.map((l) => (
+            <ContactCard key={l.id} label={l.label} value={l.value} href={l.href} />
+          ))}
         </motion.div>
 
         <motion.p
@@ -40,7 +40,7 @@ export function Contact() {
           transition={{ delay: 0.6 }}
           className="mt-20 font-mono text-xs text-muted-foreground"
         >
-          Mumbai, India · © {new Date().getFullYear()} Yatendra Jha
+          {profile?.location || "Mumbai, India"} · © {new Date().getFullYear()} {profile?.name || "Yatendra Jha"}
         </motion.p>
       </div>
     </section>
