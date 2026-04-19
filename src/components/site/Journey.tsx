@@ -39,7 +39,7 @@ function Milestone({
   side,
   index,
 }: {
-  m: (typeof milestones)[number];
+  m: { year: string; title: string; organization: string; body: string; tag: string };
   side: "left" | "right";
   index: number;
 }) {
