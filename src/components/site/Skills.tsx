@@ -1,22 +1,10 @@
 import { motion } from "framer-motion";
 import { SectionHeader } from "./Journey";
-
-const skills = [
-  "Product Strategy & Roadmapping",
-  "Platform & API-First Architecture",
-  "Multi-Partner Ecosystem Platforms",
-  "Stakeholder Leadership & Execution",
-  "CX Optimization",
-  "Automation & Decisioning Systems",
-  "Risk & Compliance",
-  "Metrics & Funnel Optimization",
-  "Experimentation",
-  "Enterprise AI (RAG, RBAC)",
-  "Co-lending & Underwriting",
-  "Regulatory-grade UX",
-];
+import { useSkills } from "@/hooks/use-content";
 
 export function Skills() {
+  const skillsData = useSkills();
+  const skills = skillsData.map((s) => s.name);
   return (
     <section id="skills" className="relative py-32 px-4">
       <div className="max-w-6xl mx-auto">

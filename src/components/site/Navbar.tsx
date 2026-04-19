@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/hooks/use-auth";
 
 const links = [
   { id: "hero", label: "Home" },
@@ -12,6 +14,8 @@ const links = [
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const { isAdmin } = useAuth();
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
     onScroll();
@@ -48,12 +52,22 @@ export function Navbar() {
             </li>
           ))}
         </ul>
-        <a
-          href="#contact"
-          className="rounded-full bg-primary px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary-foreground hover:shadow-glow transition-shadow"
-        >
-          Connect
-        </a>
+        <div className="flex items-center gap-2">
+          {isAdmin && (
+            <Link
+              to="/admin"
+              className="hidden sm:inline rounded-full border border-border px-3 py-2 text-xs font-semibold uppercase tracking-widest text-foreground hover:bg-card transition-colors"
+            >
+              Admin
+            </Link>
+          )}
+          <a
+            href="#contact"
+            className="rounded-full bg-primary px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary-foreground hover:shadow-glow transition-shadow"
+          >
+            Connect
+          </a>
+        </div>
       </nav>
     </header>
   );

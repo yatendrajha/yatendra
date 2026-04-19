@@ -1,14 +1,25 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import portrait from "@/assets/yatendra.jpg";
+import { useProfile } from "@/hooks/use-content";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
+  const profile = useProfile();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const rotate = useTransform(scrollYProgress, [0, 1], [0, -8]);
+
+  const fullName = profile?.name || "Yatendra Jha";
+  const [first, ...rest] = fullName.split(" ");
+  const last = rest.join(" ") || "";
+  const photo = profile?.photo_url || portrait;
+  const location = profile?.location || "Mumbai, India";
+  const bio =
+    profile?.bio ||
+    "Product leader building API-first, multi-tenant lending platforms. Drove ₹40,000+ Cr disbursement across 30+ institutions — turning regulatory complexity into simple, scalable product.";
 
   return (
     <section
@@ -29,7 +40,7 @@ export function Hero() {
           >
             <span className="h-2 w-2 rounded-full bg-primary animate-pulse-glow" />
             <span className="text-xs uppercase tracking-widest text-muted-foreground">
-              14+ years · Mumbai, India
+              14+ years · {location}
             </span>
           </motion.div>
 
@@ -39,8 +50,8 @@ export function Hero() {
             transition={{ duration: 1, delay: 0.1 }}
             className="text-5xl sm:text-7xl md:text-8xl font-bold leading-[0.95] tracking-tight"
           >
-            <span className="block text-foreground">Yatendra</span>
-            <span className="block text-gradient glow-text">Jha</span>
+            <span className="block text-foreground">{first}</span>
+            {last && <span className="block text-gradient glow-text">{last}</span>}
           </motion.h1>
 
           <motion.p
@@ -49,9 +60,7 @@ export function Hero() {
             transition={{ duration: 1, delay: 0.3 }}
             className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed"
           >
-            Product leader building <span className="text-foreground">API-first, multi-tenant lending platforms</span>.
-            Drove <span className="text-primary font-semibold">₹40,000+ Cr disbursement</span> across 30+ institutions —
-            turning regulatory complexity into simple, scalable product.
+            {bio}
           </motion.p>
 
           <motion.div
@@ -90,8 +99,8 @@ export function Hero() {
             className="relative aspect-[4/5] rounded-[2rem] overflow-hidden glass shadow-elevation preserve-3d"
           >
             <img
-              src={portrait}
-              alt="Yatendra Jha portrait"
+              src={photo}
+              alt={`${fullName} portrait`}
               className="h-full w-full object-cover"
               loading="eager"
             />
@@ -100,8 +109,12 @@ export function Hero() {
               <div className="flex items-end justify-between">
                 <div>
                   <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Now</p>
-                  <p className="font-display text-base text-foreground">Chief Manager — Transformation</p>
-                  <p className="text-xs text-muted-foreground">Avanse Financial Services</p>
+                  <p className="font-display text-base text-foreground">
+                    {profile?.title || "Chief Manager — Transformation"}
+                  </p>
+                  {profile?.tagline && (
+                    <p className="text-xs text-muted-foreground">{profile.tagline}</p>
+                  )}
                 </div>
                 <span className="font-mono text-[10px] text-primary">2024 →</span>
               </div>
@@ -110,7 +123,6 @@ export function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

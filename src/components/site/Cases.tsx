@@ -1,34 +1,9 @@
 import { motion } from "framer-motion";
 import { SectionHeader } from "./Journey";
-
-const cases = [
-  {
-    title: "Co-Lending Platform Transformation",
-    sub: "Multi-Partner Ecosystem",
-    problem: "Single-lender system limited capital efficiency, pricing, and scale.",
-    bet: "Convert to API-first, multi-partner platform to optimize cost of funds and access.",
-    impact: ["+40% capacity", "-30% TAT", "T+15 → T+1 payouts", "Higher retention"],
-    accent: "from-primary to-secondary",
-  },
-  {
-    title: "Unified Lending & Underwriting Platform",
-    sub: "Multi-Product",
-    problem: "Fragmented journeys across products caused drop-offs and slow decisions.",
-    bet: "Single onboarding + configurable rules engine for consistent decisioning.",
-    impact: ["+20% conversion", "-45% approval time", "-25% drop-offs", "100K+ users"],
-    accent: "from-secondary to-accent",
-  },
-  {
-    title: "Enterprise AI Knowledge Assistant",
-    sub: "Secure, Explainable AI",
-    problem: "Low trust in AI due to hallucination & data leakage risks.",
-    bet: "RAG-based, RBAC-controlled assistant with citations and walled-garden data.",
-    impact: ["Faster decisions", "Lower hold time", "Zero data leakage", "Org-wide adoption"],
-    accent: "from-accent to-primary",
-  },
-];
+import { useCaseStudies } from "@/hooks/use-content";
 
 export function Cases() {
+  const cases = useCaseStudies();
   return (
     <section id="cases" className="relative py-32 px-4">
       <div className="max-w-6xl mx-auto">
@@ -47,7 +22,7 @@ export function Cases() {
               <div
                 className={`absolute -top-20 -right-20 h-48 w-48 rounded-full bg-gradient-to-br ${c.accent} opacity-20 blur-3xl group-hover:opacity-40 transition-opacity duration-700`}
               />
-              <p className="font-mono text-[10px] uppercase tracking-widest text-primary">{c.sub}</p>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-primary">{c.subtitle}</p>
               <h3 className="mt-2 font-display text-xl font-semibold text-foreground leading-snug">
                 {c.title}
               </h3>
