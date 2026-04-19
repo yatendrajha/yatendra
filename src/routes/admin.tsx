@@ -53,9 +53,9 @@ function AdminLayout() {
                   ? location.pathname === item.to
                   : location.pathname.startsWith(item.to);
                 return (
-                  <Link
+                  <a
                     key={item.to}
-                    to={item.to}
+                    href={item.to}
                     className={`px-3 py-1.5 rounded-md text-xs uppercase tracking-widest transition-colors ${
                       active
                         ? "bg-primary/10 text-primary"
@@ -63,7 +63,7 @@ function AdminLayout() {
                     }`}
                   >
                     {item.label}
-                  </Link>
+                  </a>
                 );
               })}
             </nav>
@@ -77,13 +77,13 @@ function AdminLayout() {
         </div>
         <nav className="md:hidden flex overflow-x-auto gap-1 px-4 pb-3">
           {navItems.map((item) => (
-            <Link
+            <a
               key={item.to}
-              to={item.to}
+              href={item.to}
               className="px-3 py-1.5 rounded-md text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground whitespace-nowrap"
             >
               {item.label}
-            </Link>
+            </a>
           ))}
         </nav>
       </header>
