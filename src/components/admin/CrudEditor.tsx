@@ -73,9 +73,11 @@ export function CrudEditor({ table, title, description, fields, defaults }: Prop
       else payload[f.key] = String(v ?? "");
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const sb = supabase as any;
     const op = editingId
-      ? supabase.from(table as never).update(payload).eq("id", editingId)
-      : supabase.from(table as never).insert(payload);
+      ? sb.from(table).update(payload).eq("id", editingId)
+      : sb.from(table).insert(payload);
     const { error } = await op;
     if (error) {
       toast.error(error.message);
@@ -88,7 +90,8 @@ export function CrudEditor({ table, title, description, fields, defaults }: Prop
 
   async function remove(id: string) {
     if (!confirm("Delete this entry?")) return;
-    const { error } = await supabase.from(table as never).delete().eq("id", id);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error } = await (supabase as any).from(table).delete().eq("id", id);
     if (error) toast.error(error.message);
     else {
       toast.success("Deleted");
