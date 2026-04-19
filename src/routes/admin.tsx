@@ -13,14 +13,14 @@ export const Route = createFileRoute("/admin")({
   }),
 });
 
-const navItems = [
+const navItems: { to: string; label: string; exact?: boolean }[] = [
   { to: "/admin", label: "Profile", exact: true },
   { to: "/admin/journey", label: "Journey" },
   { to: "/admin/skills", label: "Skills" },
   { to: "/admin/cases", label: "Case Studies" },
   { to: "/admin/stats", label: "Impact Stats" },
   { to: "/admin/contact", label: "Contact" },
-] as const;
+];
 
 function AdminLayout() {
   const { user, isAdmin, loading, signOut } = useAuth();
